@@ -38,10 +38,11 @@ os.system("python object_detection/builders/model_builder_test.py")
 print("Downloading pretrained model...")
 # Downloading pretrained model
 os.chdir(PATH_ROOT + "/tf")
-MODEL = 'ssd_mobilenet_v1_coco_2017_11_17'
+MODEL = 'ssd_inception_v2_coco_2018_01_28'
 MODEL_FILE = MODEL + '.tar.gz'
 DOWNLOAD_BASE = 'http://download.tensorflow.org/models/object_detection/'
 DEST_DIR = 'pretrained_model'
+
 
 if not (os.path.exists(MODEL_FILE)):
   with open(MODEL_FILE, "wb") as file:
@@ -60,7 +61,7 @@ if (os.path.exists(DEST_DIR)):
   shutil.rmtree(DEST_DIR)
 os.rename(MODEL, DEST_DIR)
 print("Moving config file to tf folder...")
-shutil.move(PATH_ROOT+"/ssd_mobilenet_v1_pets.config", PATH_ROOT +"/tf") 
+shutil.move(PATH_ROOT+"/ssd_inception_v2_coco.config", PATH_ROOT +"/tf") 
 shutil.move(PATH_ROOT+"/config.py", PATH_ROOT +"/tf/research") 
 os.chdir(PATH_ROOT)
 

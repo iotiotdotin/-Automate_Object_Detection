@@ -188,10 +188,10 @@ def xml_to_csv(path):
             width =data["imageWidth"]
             height = data["imageHeight"]
             for shape in data["shapes"]:
-                xmin = shape["points"][0][0]
-                ymin = shape["points"][0][1]
-                xmax = shape["points"][1][0]
-                ymax = shape["points"][1][1]
+                xmin = min(float(shape["points"][0][0]) , float(shape["points"][1][0]))
+                ymin = min(float(shape["points"][0][1]) ,float(shape["points"][1][1]))
+                xmax = max(float(shape["points"][0][0]) ,float(shape["points"][1][0]))
+                ymax = max(float(shape["points"][0][1]) ,float(shape["points"][1][1]))
                 value = (filename,
                          width,
                          height,

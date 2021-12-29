@@ -31,7 +31,7 @@ os.environ['PYTHONPATH'] += ':' + PATH_ROOT + '/tf/research/:'+PATH_ROOT+'/tf/re
 
 
 pipeline = pipeline_pb2.TrainEvalPipelineConfig()                                                                                                                                                                                                          
-config_path = PATH_ROOT + '/tf/ssd_mobilenet_v1_pets.config'
+config_path = PATH_ROOT + '/tf/ssd_inception_v2_coco.config'
 with tf.gfile.GFile( config_path, "r") as f:                                                                                                                                                                                                                     
     proto_str = f.read()                                                                                                                                                                                                                                          
     text_format.Merge(proto_str, pipeline)

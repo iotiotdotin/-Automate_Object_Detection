@@ -33,6 +33,6 @@ os.environ['PYTHONPATH'] += ':' + PATH_ROOT + '/tf/research/:'+PATH_ROOT+'/tf/re
 
 TRAIN = PATH_ROOT + "/tf/research/object_detection/legacy/train.py"
 TRAIN_DIR = PATH_ROOT+"/tf/trained"
-CONFIG = PATH_ROOT+"/tf/ssd_mobilenet_v1_pets.config"
+CONFIG = PATH_ROOT+"/tf/ssd_inception_v2_coco.config"
 os.system("python "+TRAIN+" --logtostderr --train_dir="+TRAIN_DIR+" --pipeline_config_path="+CONFIG)
 os.chdir(PATH_ROOT)

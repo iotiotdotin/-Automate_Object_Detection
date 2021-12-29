@@ -19,7 +19,7 @@ PATH_ROOT = PATH_ROOT.replace(" ","")
 os.environ['PYTHONPATH'] += ':' + PATH_ROOT + '/tf/research/:'+PATH_ROOT+'/tf/research/slim/:'+PATH_ROOT+'/tf/research/object_detection/utils/:'+PATH_ROOT+'/tf/research/object_detection'
 
 PATH_CHECK = PATH_ROOT+"/tf/trained"
-PATH_CONFIG = PATH_ROOT+"/tf/ssd_mobilenet_v1_pets.config"
+PATH_CONFIG = PATH_ROOT+"/tf/ssd_inception_v2_coco.config"
 PATH_GRAPH = PATH_ROOT + "/tf/research/object_detection/export_inference_graph.py"
 PATH_OUTPUT = PATH_ROOT +"/tf/fine_tuned_model"
 LATEST_CHECK = PATH_CHECK+ ("/"+get_latest_checkpoint(PATH_CHECK))
