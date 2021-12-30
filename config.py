@@ -44,7 +44,7 @@ pipeline.eval_input_reader[0].label_map_path = PATH_ROOT + '/tfrecords/label_map
 pipeline.train_config.fine_tune_checkpoint = PATH_ROOT + '/tf/pretrained_model/model.ckpt'
 pipeline.train_config.num_steps = args.steps
 pipeline.model.ssd.num_classes = args.classes
-pipeline.eval_config.num_examples = 5
+pipeline.eval_config.num_examples = 1000
 
 config_text = text_format.MessageToString(pipeline)                                                                                                                                                                                                        
 with tf.gfile.Open( config_path, "wb") as f:                                                                                                                                                                                                                       
