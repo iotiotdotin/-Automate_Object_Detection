@@ -135,7 +135,7 @@ count = 0
 for image_path in test_filenames:
   if(count==SAMPLES):
     break
-  if image_path.find(".jpg")!=-1:
+  if image_path.find(".jpg")!=-1 or image_path.find(".png")!=-1:
     count= count+1
     image = Image.open(PATH_ROOT+"/images/"+image_path)
     # the array based representation of the image will be used later in order to prepare the
