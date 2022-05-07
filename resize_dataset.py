@@ -103,7 +103,7 @@ def resize_json(file , output_path ,newSize):
     h = f_json["imageHeight"]
     w = f_json["imageWidth"]
     img_name = os.path.basename(f_json["imagePath"].replace("\\","/"))
-
+    print('image_name_First: ',img_name)
     shapes = f_json["shapes"]
     x_scale = newSize[0] / h
     y_scale = newSize[1] / w
