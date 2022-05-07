@@ -122,7 +122,9 @@ def resize_json(file , output_path ,newSize):
         img = cv2.resize(img, (newSize[0], newSize[1]))
 
     except Exception as e:
-        print(str(e))
+        print("Error",str(e))
+        print('dataset_path:',dataset_path)
+        print('img_name',img_name)
         json_name = img_name.split(".")[0]+".json"
 
     with open(os.path.join(output_path, json_name) , 'w' , encoding='utf-8') as json_file :
