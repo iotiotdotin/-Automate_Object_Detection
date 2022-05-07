@@ -97,6 +97,7 @@ def resize_xml(xml_path, output_path, newSize):
 
 
 def resize_json(file , output_path ,newSize):
+    print('printing filename: ',file)
     f = open(file)
     f_json = json.load(f)
 
