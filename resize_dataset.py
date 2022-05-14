@@ -56,7 +56,8 @@ def resize_xml(xml_path, output_path, newSize):
 
     except Exception as e:
         print(str(e))
-        json_name = img_name.split(".")[0]+".json"
+        
+    json_name = img_name.split(".")[0]+".json"
 
     size_node = xmlRoot.find('size')
     size_node.find('width').text = str(newSize[0])
@@ -126,7 +127,7 @@ def resize_json(file , output_path ,newSize):
         print("Error",str(e))
         print('dataset_path:',dataset_path)
         print('img_name',img_name)
-        json_name = img_name.split(".")[0]+".json"
+    json_name = img_name.split(".")[0]+".json"
 
     with open(os.path.join(output_path, json_name) , 'w' , encoding='utf-8') as json_file :
         json.dump(f_json , json_file)
