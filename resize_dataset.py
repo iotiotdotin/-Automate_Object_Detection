@@ -112,6 +112,9 @@ def resize_json(file , output_path ,newSize):
     f_json["imageWidth"] = newSize[1]
 
     img = cv2.imread(os.path.join(dataset_path , img_name))
+    
+    print("\nImage Path:", os.path.join(dataset_path , img_name))
+    
     img = cv2.resize(img, (newSize[0], newSize[1]))
 
     json_name = img_name.split(".")[0]+".json"
