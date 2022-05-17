@@ -57,8 +57,6 @@ def resize_xml(xml_path, output_path, newSize):
     except Exception as e:
         print(str(e))
         
-    json_name = img_name.split(".")[0]+".json"
-
     size_node = xmlRoot.find('size')
     size_node.find('width').text = str(newSize[0])
     size_node.find('height').text = str(newSize[1])
