@@ -45,18 +45,13 @@ def resize_xml(xml_path, output_path, newSize):
 
     image_name= xmlRoot.find('filename').text
     image_path = os.path.join(dataset_path ,image_name )
+    image = cv2.imread(image_path)
+    scale_x = newSize[0] / image.shape[1]
+    scale_y = newSize[1] / image.shape[0]
 
-    try:
-        image = cv2.imread(image_path)
+    image = cv2.resize(image, (newSize[0], newSize[1]))
 
-        scale_x = newSize[0] / image.shape[1]
-        scale_y = newSize[1] / image.shape[0]
-     
-        image = cv2.resize(image, (newSize[0], newSize[1]))
 
-    except Exception as e:
-        print(str(e))
-        
     size_node = xmlRoot.find('size')
     size_node.find('width').text = str(newSize[0])
     size_node.find('height').text = str(newSize[1])
@@ -96,14 +91,13 @@ def resize_xml(xml_path, output_path, newSize):
 
 
 def resize_json(file , output_path ,newSize):
-    print('printing filename: ',file)
     f = open(file)
     f_json = json.load(f)
 
     h = f_json["imageHeight"]
     w = f_json["imageWidth"]
     img_name = os.path.basename(f_json["imagePath"].replace("\\","/"))
-    print('image_name_First: ',img_name)
+
     shapes = f_json["shapes"]
     x_scale = newSize[0] / h
     y_scale = newSize[1] / w
@@ -117,14 +111,9 @@ def resize_json(file , output_path ,newSize):
     f_json["imageHeight"] = newSize[0]
     f_json["imageWidth"] = newSize[1]
 
-    try:
-        img = cv2.imread(os.path.join(dataset_path , img_name))
-        img = cv2.resize(img, (newSize[0], newSize[1]))
+    img = cv2.imread(os.path.join(dataset_path , img_name))
+    img = cv2.resize(img, (newSize[0], newSize[1]))
 
-    except Exception as e:
-        print("Error",str(e))
-        print('dataset_path:',dataset_path)
-        print('img_name',img_name)
     json_name = img_name.split(".")[0]+".json"
 
     with open(os.path.join(output_path, json_name) , 'w' , encoding='utf-8') as json_file :
@@ -166,4 +155,3 @@ for file in files :
         resize_xml(file , out_path , newSize)
 print("Resizing Completed")
 os.chdir(PATH_ROOT)
-
