@@ -19,6 +19,12 @@ parser.add_argument("-c",
                     "--classes",
                     help="Number of classes in dataset",
                     type=int)
+parser.add_argument("-s",
+                    "--image_size",
+                    help="Size, in inches of an output image",
+                    nargs=2,
+                    default=[12,8],
+                    type=int)
 
 args = parser.parse_args()
 
@@ -82,7 +88,7 @@ test_filenames = df["filename"].tolist()
 
 
 # Size, in inches, of the output images.
-IMAGE_SIZE = (12, 8)
+IMAGE_SIZE =tuple(args.image_size)
 
 def run_inference_for_single_image(image, graph):
   with graph.as_default():
@@ -159,4 +165,5 @@ for image_path in test_filenames:
     plt.figure(figsize=IMAGE_SIZE)
     plt.imshow(image_np)
 os.chdir(PATH_ROOT)
+
 
